@@ -40,19 +40,71 @@ function addDish(newDish) {
 </script>
 
 <template>
-  <div class="container-login" v-if="screen === 'login'">
-    <form action="" id="form">
-      <div class="holder"><label for="">User</label><input type="text" v-model="user" /></div>
-      <div class="holder"><label for="">Password</label><input type="password" v-model="password" /></div>
-      <button id="login" type="button" @click="login">Login</button>
-    </form>
-  </div>
-  <div class="container-post" v-else-if="screen === 'dish'">
-    <h1>Platillos</h1>
-    <button @click="screen = 'createDish'">Agregar Platillo</button>
-    <div v-for="dish of dishes">
-      <Dish :name="dish.name" :description="dish.description" :price="dish.price" :time="dish.time" />
+  <div class="body">
+    <div class="container-login" v-if="screen === 'login'">
+      <form action="" id="form">
+        <div class="holder">
+          <label for="">Usuario</label><input type="text" v-model="user" placeholder="Ingrese su usuario" />
+        </div>
+        <div class="holder">
+          <label for="">Contraseña</label
+          ><input type="password" v-model="password" placeholder="Ingrese su contraseña" />
+        </div>
+        <button id="login" type="button" @click="login">Login</button>
+      </form>
     </div>
+    <div class="container-post" v-else-if="screen === 'dish'">
+      <h1>Platillos</h1>
+      <button @click="screen = 'createDish'">Agregar Platillo</button>
+      <div v-for="dish of dishes">
+        <Dish :name="dish.name" :description="dish.description" :price="dish.price" :time="dish.time" />
+      </div>
+    </div>
+    <CreateDish v-else-if="screen === 'createDish'" @createDish="addDish" />
   </div>
-  <CreateDish v-else-if="screen === 'createDish'" @createDish="addDish" />
 </template>
+
+<style>
+.body {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100vw;
+  height: 100vh;
+  gap: 30px;
+}
+#login {
+  width: fit-content;
+  border-radius: 10px;
+  border: none;
+  font-size: 1.4em;
+  background: #bdd358;
+  align-self: center;
+  padding: 10px 30px;
+  transition: 1.2s;
+}
+#login:hover {
+  background: #e5e059;
+}
+.holder {
+  display: flex;
+  width: 100%;
+  justify-content: space-between;
+}
+#form {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  width: 40%;
+  height: 40%;
+}
+.container-login {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: #e5625e;
+  border-radius: 15px;
+  height: 30%;
+  width: 35%;
+}
+</style>

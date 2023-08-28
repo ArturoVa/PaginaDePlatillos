@@ -46,4 +46,9 @@ function publish() {
   gap: 10px;
   padding: 10px;
 }
+.form {
+  background: #f0b86e;
+  border-radius: 10px;
+  padding: 7em;
+}
 </style>

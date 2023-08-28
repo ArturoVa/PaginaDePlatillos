@@ -24,7 +24,7 @@ defineProps({
 .container {
   display: flex;
   width: 100%;
-  min-height: 40%;
+  min-height: 10vh;
   padding: 10px;
   box-sizing: border-box;
   background: #141e46;
@@ -32,6 +32,7 @@ defineProps({
   justify-content: space-around;
   align-items: center;
   border-radius: 5px;
+  margin: 15px 0px;
 }
 .container .title {
   min-width: 20%;

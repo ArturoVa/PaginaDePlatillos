@@ -62,8 +62,10 @@ function addDish(newDish) {
           <button @click="screen = 'createDish'" id="buttonAdd">Agregar Platillo</button>
         </div>
         <hr color="black" />
-        <div v-for="dish of dishes">
-          <Dish :name="dish.name" :description="dish.description" :price="dish.price" :time="dish.time" />
+        <div id="displayList">
+          <div v-for="dish of dishes">
+            <Dish :name="dish.name" :description="dish.description" :price="dish.price" :time="dish.time" />
+          </div>
         </div>
       </div>
     </div>
@@ -76,6 +78,8 @@ function addDish(newDish) {
 body {
   margin: 0;
   padding: 0;
+  overflow-x: hidden;
+  box-sizing: border-box;
 }
 .body {
   margin: 0;
@@ -85,7 +89,7 @@ body {
   align-items: center;
   max-width: 100vw;
   width: 100vw;
-  max-height: 100vh;
+
   height: 100vh;
   gap: 30px;
   box-sizing: border-box;
@@ -119,9 +123,10 @@ body {
 .container-post {
   background: #e19898;
   width: 80%;
-  height: 80%;
+  min-height: 80%;
   padding: 30px;
   border-radius: 10px;
+  box-sizing: border-box;
 }
 .container-login {
   display: flex;
@@ -132,6 +137,8 @@ body {
   height: 30%;
   width: 35%;
   flex-direction: column;
+}
+#box {
 }
 #title {
   display: flex;
@@ -145,5 +152,10 @@ body {
   font-size: 1.3em;
   color: none;
   background-color: #ebe76c;
+}
+#displayList {
+  max-height: 65vh;
+  overflow: auto;
+  height: 100%;
 }
 </style>

@@ -43,6 +43,7 @@ function addDish(newDish) {
   <div class="body">
     <div class="container-login" v-if="screen === 'login'">
       <h1>Iniciar Sesion</h1>
+
       <form action="" id="form">
         <div class="holder">
           <label for="">Usuario</label><input type="text" v-model="user" placeholder="Ingrese su usuario" />
@@ -56,8 +57,11 @@ function addDish(newDish) {
     </div>
     <div class="container-post" v-else-if="screen === 'dish'">
       <div id="box">
-        <h1>Platillos</h1>
-        <button @click="screen = 'createDish'">Agregar Platillo</button>
+        <div id="title">
+          <h1>Platillos</h1>
+          <button @click="screen = 'createDish'" id="buttonAdd">Agregar Platillo</button>
+        </div>
+        <hr color="black" />
         <div v-for="dish of dishes">
           <Dish :name="dish.name" :description="dish.description" :price="dish.price" :time="dish.time" />
         </div>
@@ -69,13 +73,22 @@ function addDish(newDish) {
 </template>
 
 <style>
+body {
+  margin: 0;
+  padding: 0;
+}
 .body {
+  margin: 0;
+  padding: 0;
   display: flex;
   justify-content: center;
   align-items: center;
+  max-width: 100vw;
   width: 100vw;
+  max-height: 100vh;
   height: 100vh;
   gap: 30px;
+  box-sizing: border-box;
 }
 #login {
   width: fit-content;
@@ -85,11 +98,9 @@ function addDish(newDish) {
   background: #bdd358;
   align-self: center;
   padding: 10px 30px;
-  transition: 1.2s;
+  transition: 0.5s;
 }
-#box {
-  background: #ff6969;
-}
+
 #login:hover {
   background: #e5e059;
 }
@@ -105,14 +116,34 @@ function addDish(newDish) {
   width: 40%;
   height: 40%;
 }
+.container-post {
+  background: #e19898;
+  width: 80%;
+  height: 80%;
+  padding: 30px;
+  border-radius: 10px;
+}
 .container-login {
   display: flex;
   justify-content: center;
   align-items: center;
-  background: #fff5e0;
+  background: #e19898;
   border-radius: 15px;
   height: 30%;
   width: 35%;
   flex-direction: column;
+}
+#title {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background-color: transparent;
+}
+#buttonAdd {
+  border-radius: 10px;
+  border: none;
+  font-size: 1.3em;
+  color: none;
+  background-color: #ebe76c;
 }
 </style>

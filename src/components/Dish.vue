@@ -27,7 +27,8 @@ defineProps({
   min-height: 40%;
   padding: 10px;
   box-sizing: border-box;
-  background: grey;
+  background: #141e46;
+  color: beige;
   justify-content: space-around;
   align-items: center;
   border-radius: 5px;

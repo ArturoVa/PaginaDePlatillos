@@ -16,7 +16,7 @@ defineProps({
       <br />
       <span>tiempo de preparacion: {{ time }}</span>
     </div>
-    <img :src="img" alt="aqui va una imagen" class="image" />
+    <img :src="img" alt="imagen" class="image" />
   </div>
 </template>
 

@@ -6,15 +6,16 @@ import CreateDish from './CreateDish.vue'
 const screen = ref('login')
 
 class Platillo {
-  constructor(name, description, price, time) {
+  constructor(name, description, price, time, image) {
     this.name = name
     this.description = description
     this.price = price
     this.time = time
+    this.image = image
   }
 }
 
-const initialDishes = [new Platillo('Nombre', 'descripcion', 'precio', 'tiempo')]
+const initialDishes = [new Platillo('Nombre', 'descripcion', 'precio', 'tiempo', 'imagenn')]
 const dishes = ref(JSON.parse(window.localStorage.getItem('dish')) ?? initialDishes)
 const user = ref('')
 const password = ref('')
@@ -64,7 +65,13 @@ function addDish(newDish) {
         <hr color="black" />
         <div id="displayList">
           <div v-for="dish of dishes">
-            <Dish :name="dish.name" :description="dish.description" :price="dish.price" :time="dish.time" />
+            <Dish
+              :name="dish.name"
+              :description="dish.description"
+              :price="dish.price"
+              :time="dish.time"
+              :img="dish.image"
+            />
           </div>
         </div>
       </div>
@@ -138,8 +145,6 @@ body {
   width: 35%;
   flex-direction: column;
 }
-#box {
-}
 #title {
   display: flex;
   justify-content: space-between;
@@ -152,6 +157,10 @@ body {
   font-size: 1.3em;
   color: none;
   background-color: #ebe76c;
+  transition: 0.5s;
+}
+#buttonAdd:hover {
+  transform: scale(1.2);
 }
 #displayList {
   max-height: 65vh;

@@ -42,6 +42,7 @@ function addDish(newDish) {
 <template>
   <div class="body">
     <div class="container-login" v-if="screen === 'login'">
+      <h1>Iniciar Sesion</h1>
       <form action="" id="form">
         <div class="holder">
           <label for="">Usuario</label><input type="text" v-model="user" placeholder="Ingrese su usuario" />
@@ -54,12 +55,15 @@ function addDish(newDish) {
       </form>
     </div>
     <div class="container-post" v-else-if="screen === 'dish'">
-      <h1>Platillos</h1>
-      <button @click="screen = 'createDish'">Agregar Platillo</button>
-      <div v-for="dish of dishes">
-        <Dish :name="dish.name" :description="dish.description" :price="dish.price" :time="dish.time" />
+      <div id="box">
+        <h1>Platillos</h1>
+        <button @click="screen = 'createDish'">Agregar Platillo</button>
+        <div v-for="dish of dishes">
+          <Dish :name="dish.name" :description="dish.description" :price="dish.price" :time="dish.time" />
+        </div>
       </div>
     </div>
+
     <CreateDish v-else-if="screen === 'createDish'" @createDish="addDish" />
   </div>
 </template>
@@ -83,6 +87,9 @@ function addDish(newDish) {
   padding: 10px 30px;
   transition: 1.2s;
 }
+#box {
+  background: #ff6969;
+}
 #login:hover {
   background: #e5e059;
 }
@@ -102,9 +109,10 @@ function addDish(newDish) {
   display: flex;
   justify-content: center;
   align-items: center;
-  background: #e5625e;
+  background: #fff5e0;
   border-radius: 15px;
   height: 30%;
   width: 35%;
+  flex-direction: column;
 }
 </style>
